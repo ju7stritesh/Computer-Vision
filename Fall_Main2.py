@@ -47,64 +47,64 @@ while True:
   # Find the maximum and minimum in both axis
   # (max1,min1) = (edges>0).nonzero()
 
-  # if len(max1) > 0:
-  #     height =  max1.max() - max1.min()
-  #     width =  min1.max() - min1.min()
-  #     miny = max1.min()
-  #     maxy = max1.max()
-  #     minx = min1.min()
-  #     maxx = min1.max()
+   if len(max1) > 0:
+       height =  max1.max() - max1.min()
+       width =  min1.max() - min1.min()
+       miny = max1.min()
+       maxy = max1.max()
+       minx = min1.min()
+       maxx = min1.max()
       # print width * height
-      # if width > 0 and height > 0 and width * height > 6500:
-      #     crop_frame = crop_frame[miny:maxy,minx:maxx]
+       if width > 0 and height > 0 and width * height > 6500:
+           crop_frame = crop_frame[miny:maxy,minx:maxx]
       #     # print crop_frame.shape, new_image.shape
-      #     # crop_frame = cv2.resize(crop_frame, (0,0),  fx = 1, fy = 1)
+           # crop_frame = cv2.resize(crop_frame, (0,0),  fx = 1, fy = 1)
       #     new_image = new_image*0
-      #     new_image[y_offset:y_offset+crop_frame.shape[0], x_offset:x_offset+crop_frame.shape[1]] = crop_frame
-      #     doing = "Someone is there"
+           new_image[y_offset:y_offset+crop_frame.shape[0], x_offset:x_offset+crop_frame.shape[1]] = crop_frame
+           doing = "Someone is there"
       #     print ("Someone is there")
-      #     cv2.rectangle(display_frame, (minx, miny), (minx + width, miny + height), (0, 255, 0), 3)
-      #     cv2.imshow("rectangle", display_frame)
-      #     cv2.putText(display_frame, doing, (5, 545), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255))
-      #     output.write(display_frame)
+           cv2.rectangle(display_frame, (minx, miny), (minx + width, miny + height), (0, 255, 0), 3)
+           cv2.imshow("rectangle", display_frame)
+           cv2.putText(display_frame, doing, (5, 545), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255))
+           output.write(display_frame)
       #     print (1.0*width/height)
       #
-      #     if 1.0*width/height > 1.8:
+           if 1.0*width/height > 1.8:
       #         print ("test")
-          #     engine = pyttsx.init()
-          #     engine.say('If you need help reply with yes or no?')
-          #     engine.runAndWait()
-          #     r = sr.Recognizer()
-          #     with sr.Microphone() as source:
-          #         print("Say something!")
-          #         audio = r.listen(source)
-          #         try:
-          #               print("You said: " + r.recognize_google(audio))
-          #         except sr.UnknownValueError:
-          #               engine.say("Google Speech Recognition could not understand audio")
-          #               engine.runAndWait()
-          #         except sr.RequestError as e:
-          #               engine.say("Could not request results from Google Speech Recognition service; {0}".format(e))
-          #               engine.runAndWait()
-          #         # if r.recognize_google(audio) == "yes":
-          #               engine.say('Please stay still, Help is on the way')
-          #               twilio_account_sid = 'AC2d74ff88b9310a2d58529f6e3e50a0ac'
-          #               twilio_auth_token = '203e5ec10d6ed49053b94acdc4b6c193'
-          #               print (twilio_account_sid)
-          #               client = twilio.rest.Client(twilio_account_sid, twilio_auth_token)
-          #               message = client.messages.create(
-          #                   body="Ritesh is in trouble, he needs help",
-          #                   to="+18123498991",
-          #                   from_="+13174582882"
-          #                   )
-          #               engine.runAndWait()
-          #               exit()
+               engine = pyttsx.init()
+               engine.say('If you need help reply with yes or no?')
+               engine.runAndWait()
+               r = sr.Recognizer()
+               with sr.Microphone() as source:
+                   print("Say something!")
+                   audio = r.listen(source)
+                   try:
+                         print("You said: " + r.recognize_google(audio))
+                   except sr.UnknownValueError:
+                         engine.say("Google Speech Recognition could not understand audio")
+                         engine.runAndWait()
+                   except sr.RequestError as e:
+                         engine.say("Could not request results from Google Speech Recognition service; {0}".format(e))
+                         engine.runAndWait()
+                   # if r.recognize_google(audio) == "yes":
+                         engine.say('Please stay still, Help is on the way')
+                         twilio_account_sid = 'AC2d74ff88b931f6e3e50a0ac'
+                         twilio_auth_token = '203e053b94acdc4b6c193'
+                         print (twilio_account_sid)
+                         client = twilio.rest.Client(twilio_account_sid, twilio_auth_token)
+                         message = client.messages.create(
+                             body="Ritesh is in trouble, he needs help",
+                             to="+18123498991",
+                             from_="+13174582882"
+                             )
+                         engine.runAndWait()
+                         exit()
 
-  # else:
-  #     doing = "No one is there"
-  #     # print ("No one is there")
-  #     cv2.putText(display_frame, doing, (5, 545), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255))
-  #     output.write(display_frame)
+   else:
+       doing = "No one is there"
+       # print ("No one is there")
+       cv2.putText(display_frame, doing, (5, 545), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255))
+       output.write(display_frame)
 
 
   # Read next image
